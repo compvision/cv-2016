@@ -1,1 +1,0 @@
-/home/option16/Documents/cv-2016/build/src/CMakeFiles/catapult.dir
