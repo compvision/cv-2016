@@ -51,9 +51,13 @@ int main(int argc, char* argv[])
         {
             processor.loadTarget(target);
             double distance = processor.calculateDistance();
+			double azimuth = processor.calculateAzimuth();
+			double altitude = processor.calculateAltitude();
 
             networkController.sendMessage("true;" +
-                boost::lexical_cast<std::string> (distance));
+                boost::lexical_cast<std::string> (distance) + ";" +
+				boost::lexical_cast<std::string> (azimuth) + ";" +
+				boost::lexical_cast<std::string> (altitude));
 
             std::cout << "Target Found! Distance: " << distance;
         }

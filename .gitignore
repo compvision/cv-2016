@@ -1,0 +1,6 @@
+build/
+
+src/*.swp
+src/~*
+
+*.save
