@@ -1,5 +1,6 @@
 #include "Target.hpp"
 #include <opencv2/opencv.hpp>
+#include <math.h>
 
 Target::Target(std::vector<cv::Point> contour)
 {
@@ -8,12 +9,12 @@ Target::Target(std::vector<cv::Point> contour)
 
 double Target::getHeight()
 {
-    return getTopPoint().y - getBottomPoint().y;
+    return fabs(getTopPoint().y - getBottomPoint().y);
 }
 
 double Target::getWidth()
 {
-    return getRightPoint().x - getLeftPoint().x;
+    return fabs(getRightPoint().x - getLeftPoint().x);
 }
 
 void Target::printPoints() //debugging
