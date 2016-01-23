@@ -7,12 +7,17 @@ TargetDetector::TargetDetector() {
 }
 
 Target* TargetDetector::processImage(Mat input) {
-    input = thresholdImage(input, 22, 44);
+    input = thresholdImage(input, 48, 100);
+    secretImage = input;
     input = canny(input);
     std::vector<std::vector<Point> > contours = contour(input);
     std::vector<Point> finalContour = filterContours(contours);
     Target toReturn(finalContour);
     return &toReturn;
+}
+
+Mat TargetDetector::getSecrets() {
+    return secretImage;
 }
 
 //private methods
@@ -21,6 +26,7 @@ Mat TargetDetector::canny(Mat input){
     Canny(input, input, 0, 20, 3);
     return input;
 }
+
 
 Mat TargetDetector::thresholdImage(Mat input, int min, int max){
     Mat hImg;

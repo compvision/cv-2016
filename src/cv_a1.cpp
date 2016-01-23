@@ -11,9 +11,27 @@ using namespace cv;
 
 int main(){
     VideoDevice camera;
-    camera.startCapture(0);
-    Mat img = camera.getImage();
+    //camera.startCapture(1);
+
+    Mat img = imread("Images/1meter/1meter.jpg");
+    imshow("Image", img);
+    waitKey(0);
     TargetDetector detector;
-    Target* tar = detector.processImage(img);
+    detector.processImage(img);
+
+    imshow("Thresholded", detector.getSecrets());
+
+    /*
+    while (waitKey(30) != 0) {
+        Mat img = camera.getImage();
+        TargetDetector detector;
+        Target* tar = detector.processImage(img);
+        imshow("IMAGES OMFG", img);
+
+    }
+    */
+
     std::cout<<"yay no errors";
+    waitKey(0);
+
 }
