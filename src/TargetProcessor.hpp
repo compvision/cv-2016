@@ -11,15 +11,21 @@ class TargetProcessor
         TargetProcessor();
         void loadTarget(Target* target);
         double calculateDistance();
+        double calculateAzimuth();
 
     private:
 
-        double imageWidth;
-       // double imageHeight;
+        double imageTarWidth;
+        //double imageHeight;
         double objectWidth;
-       // double objectHeight;
-    //only need width or height, not both.
+        //double objectHeight;
+        //only need width or height, not both.
+        cv::Point imageTarCenter;
         double focalLength; 
+        double horizCenter;
+        //center horizontal point of the picture
+        double vertCenter;
+        //center vertical point
 
 };
 

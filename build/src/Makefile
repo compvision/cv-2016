@@ -103,25 +103,25 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/CMakeFiles/cv_a1.dir/rule:
-	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/cv_a1.dir/rule
-.PHONY : src/CMakeFiles/cv_a1.dir/rule
+src/CMakeFiles/cv_a2.dir/rule:
+	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/cv_a2.dir/rule
+.PHONY : src/CMakeFiles/cv_a2.dir/rule
 
 # Convenience name for target.
-cv_a1: src/CMakeFiles/cv_a1.dir/rule
-.PHONY : cv_a1
+cv_a2: src/CMakeFiles/cv_a2.dir/rule
+.PHONY : cv_a2
 
 # fast build rule for target.
-cv_a1/fast:
-	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a1.dir/build.make src/CMakeFiles/cv_a1.dir/build
-.PHONY : cv_a1/fast
+cv_a2/fast:
+	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a2.dir/build.make src/CMakeFiles/cv_a2.dir/build
+.PHONY : cv_a2/fast
 
 Target.o: Target.cpp.o
 .PHONY : Target.o
 
 # target to build an object file
 Target.cpp.o:
-	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a1.dir/build.make src/CMakeFiles/cv_a1.dir/Target.cpp.o
+	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a2.dir/build.make src/CMakeFiles/cv_a2.dir/Target.cpp.o
 .PHONY : Target.cpp.o
 
 Target.i: Target.cpp.i
@@ -129,7 +129,7 @@ Target.i: Target.cpp.i
 
 # target to preprocess a source file
 Target.cpp.i:
-	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a1.dir/build.make src/CMakeFiles/cv_a1.dir/Target.cpp.i
+	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a2.dir/build.make src/CMakeFiles/cv_a2.dir/Target.cpp.i
 .PHONY : Target.cpp.i
 
 Target.s: Target.cpp.s
@@ -137,80 +137,56 @@ Target.s: Target.cpp.s
 
 # target to generate assembly for a file
 Target.cpp.s:
-	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a1.dir/build.make src/CMakeFiles/cv_a1.dir/Target.cpp.s
+	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a2.dir/build.make src/CMakeFiles/cv_a2.dir/Target.cpp.s
 .PHONY : Target.cpp.s
 
-TargetDetector.o: TargetDetector.cpp.o
-.PHONY : TargetDetector.o
+TargetProcessor.o: TargetProcessor.cpp.o
+.PHONY : TargetProcessor.o
 
 # target to build an object file
-TargetDetector.cpp.o:
-	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a1.dir/build.make src/CMakeFiles/cv_a1.dir/TargetDetector.cpp.o
-.PHONY : TargetDetector.cpp.o
+TargetProcessor.cpp.o:
+	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a2.dir/build.make src/CMakeFiles/cv_a2.dir/TargetProcessor.cpp.o
+.PHONY : TargetProcessor.cpp.o
 
-TargetDetector.i: TargetDetector.cpp.i
-.PHONY : TargetDetector.i
+TargetProcessor.i: TargetProcessor.cpp.i
+.PHONY : TargetProcessor.i
 
 # target to preprocess a source file
-TargetDetector.cpp.i:
-	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a1.dir/build.make src/CMakeFiles/cv_a1.dir/TargetDetector.cpp.i
-.PHONY : TargetDetector.cpp.i
+TargetProcessor.cpp.i:
+	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a2.dir/build.make src/CMakeFiles/cv_a2.dir/TargetProcessor.cpp.i
+.PHONY : TargetProcessor.cpp.i
 
-TargetDetector.s: TargetDetector.cpp.s
-.PHONY : TargetDetector.s
+TargetProcessor.s: TargetProcessor.cpp.s
+.PHONY : TargetProcessor.s
 
 # target to generate assembly for a file
-TargetDetector.cpp.s:
-	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a1.dir/build.make src/CMakeFiles/cv_a1.dir/TargetDetector.cpp.s
-.PHONY : TargetDetector.cpp.s
+TargetProcessor.cpp.s:
+	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a2.dir/build.make src/CMakeFiles/cv_a2.dir/TargetProcessor.cpp.s
+.PHONY : TargetProcessor.cpp.s
 
-VideoDevice.o: VideoDevice.cpp.o
-.PHONY : VideoDevice.o
+cv_a2.o: cv_a2.cpp.o
+.PHONY : cv_a2.o
 
 # target to build an object file
-VideoDevice.cpp.o:
-	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a1.dir/build.make src/CMakeFiles/cv_a1.dir/VideoDevice.cpp.o
-.PHONY : VideoDevice.cpp.o
+cv_a2.cpp.o:
+	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a2.dir/build.make src/CMakeFiles/cv_a2.dir/cv_a2.cpp.o
+.PHONY : cv_a2.cpp.o
 
-VideoDevice.i: VideoDevice.cpp.i
-.PHONY : VideoDevice.i
-
-# target to preprocess a source file
-VideoDevice.cpp.i:
-	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a1.dir/build.make src/CMakeFiles/cv_a1.dir/VideoDevice.cpp.i
-.PHONY : VideoDevice.cpp.i
-
-VideoDevice.s: VideoDevice.cpp.s
-.PHONY : VideoDevice.s
-
-# target to generate assembly for a file
-VideoDevice.cpp.s:
-	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a1.dir/build.make src/CMakeFiles/cv_a1.dir/VideoDevice.cpp.s
-.PHONY : VideoDevice.cpp.s
-
-cv_a1.o: cv_a1.cpp.o
-.PHONY : cv_a1.o
-
-# target to build an object file
-cv_a1.cpp.o:
-	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a1.dir/build.make src/CMakeFiles/cv_a1.dir/cv_a1.cpp.o
-.PHONY : cv_a1.cpp.o
-
-cv_a1.i: cv_a1.cpp.i
-.PHONY : cv_a1.i
+cv_a2.i: cv_a2.cpp.i
+.PHONY : cv_a2.i
 
 # target to preprocess a source file
-cv_a1.cpp.i:
-	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a1.dir/build.make src/CMakeFiles/cv_a1.dir/cv_a1.cpp.i
-.PHONY : cv_a1.cpp.i
+cv_a2.cpp.i:
+	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a2.dir/build.make src/CMakeFiles/cv_a2.dir/cv_a2.cpp.i
+.PHONY : cv_a2.cpp.i
 
-cv_a1.s: cv_a1.cpp.s
-.PHONY : cv_a1.s
+cv_a2.s: cv_a2.cpp.s
+.PHONY : cv_a2.s
 
 # target to generate assembly for a file
-cv_a1.cpp.s:
-	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a1.dir/build.make src/CMakeFiles/cv_a1.dir/cv_a1.cpp.s
-.PHONY : cv_a1.cpp.s
+cv_a2.cpp.s:
+	cd /home/option16/workspace/cv-2016/build && $(MAKE) -f src/CMakeFiles/cv_a2.dir/build.make src/CMakeFiles/cv_a2.dir/cv_a2.cpp.s
+.PHONY : cv_a2.cpp.s
 
 # Help Target
 help:
@@ -218,21 +194,18 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... cv_a1"
+	@echo "... cv_a2"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Target.o"
 	@echo "... Target.i"
 	@echo "... Target.s"
-	@echo "... TargetDetector.o"
-	@echo "... TargetDetector.i"
-	@echo "... TargetDetector.s"
-	@echo "... VideoDevice.o"
-	@echo "... VideoDevice.i"
-	@echo "... VideoDevice.s"
-	@echo "... cv_a1.o"
-	@echo "... cv_a1.i"
-	@echo "... cv_a1.s"
+	@echo "... TargetProcessor.o"
+	@echo "... TargetProcessor.i"
+	@echo "... TargetProcessor.s"
+	@echo "... cv_a2.o"
+	@echo "... cv_a2.i"
+	@echo "... cv_a2.s"
 .PHONY : help
 
 
