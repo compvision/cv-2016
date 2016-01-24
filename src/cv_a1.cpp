@@ -5,15 +5,14 @@ This an amazing main
 #include "VideoDevice.hpp"
 #include "TargetDetector.hpp"
 #include "Target.hpp"
-#include <iostream>
 #include <opencv2/opencv.hpp>
 using namespace cv;
 
 int main(){
     VideoDevice camera;
     //camera.startCapture(1);
-
-    Mat img = imread("Images/1meter/1meter.jpg");
+    //               out of src, out of build
+    Mat img = imread("../../imgs/ourpics/9ft_45degrees/9ft_45degrees.jpg");
     imshow("Image", img);
     waitKey(0);
     TargetDetector detector;
