@@ -1,8 +1,8 @@
 find_package(OpenCV REQUIRED)
 find_package(Boost REQUIRED COMPONENTS system thread)
 
-#add_executable(cv_a1 cv_a1.cpp Target.cpp TargetDetector.cpp VideoDevice.cpp)
-#target_link_libraries(cv_a1 ${OpenCV_LIBS})
+add_executable(cv_a1 cv_a1.cpp Target.cpp TargetDetector.cpp VideoDevice.cpp)
+target_link_libraries(cv_a1 ${OpenCV_LIBS})
 
 add_executable(cv_a2 cv_a2.cpp TargetProcessor.cpp Target.cpp)
 target_link_libraries(cv_a2 ${OpenCV_LIBS})
