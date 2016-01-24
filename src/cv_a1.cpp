@@ -8,7 +8,8 @@ This an amazing main
 #include <opencv2/opencv.hpp>
 using namespace cv;
 
-int main(){
+int main()
+{
     VideoDevice camera;
     //camera.startCapture(1);
     //               out of src, out of build

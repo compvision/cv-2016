@@ -9,6 +9,8 @@ class Target
         Target(std::vector<Point> contour);
         double getHeight();
         double getWidth();
+        void printPoints();
+        Point getCenter();
     private:
         Point getTopPoint();
         Point getBottomPoint();

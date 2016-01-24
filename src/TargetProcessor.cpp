@@ -1,20 +1,31 @@
 #include "Target.hpp"
 #include "TargetProcessor.hpp"
+#include <math.h>
 
 TargetProcessor::TargetProcessor()
 {
-    objectWidth = 1.0; //temporary value. put real object size here later
-    focalLength = 640; //temporary value again
+    objectWidth = 1.6667; //feet
+    focalLength = 480; //varies by camera
+    horizCenter = 320; //aslo varies by camera
+    vertCenter = 240;
 
 } //constructor
 
 void TargetProcessor::loadTarget(Target* target)
 {
-    imageWidth = target->getWidth();
+    imageTarWidth = target->getWidth();
     //double imageHeight = target->getHeight();
+    imageTarCenter = target->getCenter();
 }
 
 double TargetProcessor::calculateDistance()
 {
-    return (focalLength*objectWidth)/imageWidth; //returns a distance
+    return objectWidth*focalLength/imageTarWidth; //returns the distance
+}
+
+double TargetProcessor::calculateAzimuth()
+{
+    double offset = fabs(imageTarCenter.x / horizCenter);
+    double distance = calculateDistance();
+    return atan(offset/distance);
 }
