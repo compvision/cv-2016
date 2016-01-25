@@ -13,13 +13,12 @@ int main()
     VideoDevice camera;
     //camera.startCapture(1);
     //               out of src, out of build
-    Mat img = imread("../../imgs/ourpics/9ft_45degrees/9ft_45degrees.jpg");
+    Mat img = imread("../../imgs/ourpics/9ft_tilted/9ft_tilted.jpg");
     imshow("Image", img);
     waitKey(0);
     TargetDetector detector;
     detector.processImage(img);
 
-    imshow("Thresholded", detector.getSecrets());
 
     /*
     while (waitKey(30) != 0) {

@@ -14,7 +14,7 @@ Target* TargetDetector::processImage(Mat input) {
     //secretImage = input.clone();
     dilate(input, input, Mat());
     secretImage = input.clone();
-    imshow("Di of lated", input);
+    imshow("Before Contouring", input);
 
     std::vector<std::vector<Point> > contours = contour(input);
     std::vector<Point> finalContour = filterContours(contours);
@@ -90,7 +90,7 @@ double TargetDetector::angle(cv::Point p1, cv::Point p2, cv::Point p0)
 
 std::vector<Point> TargetDetector::filterContours(std::vector<std::vector<Point> > contours){
 
-    Mat thirdTime(Size(1000,1000), CV_8UC1, Scalar( rand()&255, rand()&255, rand()&255 ));
+    Mat thirdTime(Size(500,500), CV_8UC1, Scalar( rand()&255, rand()&255, rand()&255 ));
 
     for(int j = 0; j < contours.size(); j++)
     {
@@ -98,14 +98,28 @@ std::vector<Point> TargetDetector::filterContours(std::vector<std::vector<Point>
         std::vector<std::vector<Point> > pointless;
         approxPolyDP(contours[j], outputContour, (cv::arcLength(cv::Mat(contours.at(j)), true) * 0.02), true);
 
-        pointless.push_back(outputContour);
-        Scalar color( rand()&255, rand()&255, rand()&255 );
-        drawContours(thirdTime, pointless, 0, color);
 
-        /*if (outputContour.size() == 4 && contourArea(outputContour) > 100){//&& isContourConvex(outputContour)) {
 
+        std::cout<<"Points" << outputContour << std::endl;
+        if (contourArea(outputContour) > 100){//&& isContourConvex(outputContour)) {
+            double maxCosine = 0;
+            for(int j = 2; j <=4; j++)
+            {
+                double cosine = fabs(cos(angle(outputContour.at(j%4),
+                outputContour.at(j-2), outputContour.at(j-1))));
+                maxCosine = MAX(maxCosine, cosine);
+            }
+            //filters out contours that don't have only 90deg anlges
+            if(maxCosine < .2)
+
+            {
+                pointless.push_back(outputContour);
+                Scalar color( rand()&255, rand()&255, rand()&255 );
+                drawContours(thirdTime, pointless, 0, color);            }
+
+        }
             //return outputContour;
-
+            /*
         //filters shapes that doen't have 8 points, aren't 50 big, and are concave
         if (outputContour.size() == 8 && contourArea(outputContour) > 50
             && isContourConvex(outputContour))
