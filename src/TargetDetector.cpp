@@ -125,8 +125,9 @@ std::vector<Point> TargetDetector::filterContours(std::vector<std::vector<Point>
             }
 >>>>>>> 1102d98a1c0746361617778a07451db59fc96843
         }
+        */
     }
-    */
+
     imshow("originalSecretImage", thirdTime);
 
     return std::vector<Point>();

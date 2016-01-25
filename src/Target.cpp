@@ -19,23 +19,25 @@ double Target::getWidth()
 
 void Target::printPoints() //debugging
 {
-    std::cout << "TopPoint: " << getTopPoint() << std::endl; 
-    std::cout << "BottomPoint: " << getBottomPoint() << std::endl; 
-    std::cout << "LeftPoint: " << getLeftPoint() << std::endl; 
-    std::cout << "RightPoint: " << getRightPoint() << std::endl; 
+    std::cout << "TopPoint: " << getTopPoint() << std::endl;
+    std::cout << "BottomPoint: " << getBottomPoint() << std::endl;
+    std::cout << "LeftPoint: " << getLeftPoint() << std::endl;
+    std::cout << "RightPoint: " << getRightPoint() << std::endl;
 }
 
 cv::Point Target::getCenter()//finds center point of target
 {
     cv::Point center(0, 0);
-    
+
     int x = 0;
     for(; x < edge.size(); x++)
     {
         center += edge.at(x);
     }
-    center /= x;
-    
+    //center /= x;
+    center.x /= x
+    center.y /= x;
+    //will discuss better changes next time we meet
     return center;
 }
 

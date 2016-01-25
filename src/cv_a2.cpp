@@ -14,7 +14,7 @@ int main()
     rect.push_back(cv::Point(407, 142));
     rect.push_back(cv::Point(405, 303));
     rect.push_back(cv::Point(177, 293));
-    
+
     //test values based on target from rect1f.jpg (modded)
 
     Target* target = new Target(rect);
@@ -24,9 +24,9 @@ int main()
     double distance = processor.calculateDistance();
     double azimuth = processor.calculateAzimuth();
     target->printPoints();
-    
-    std::cout << "distance: " << distance << std::endl;
-    std::cout << "azimuth: " << azimuth << std::endl;
 
+    std::cout << "distance: " << distance << "m" <<std::endl;
+    std::cout << "azimuth: " << azimuth << "m" << std::endl;
+    //wasn't sure which units
     return 0;
 }
