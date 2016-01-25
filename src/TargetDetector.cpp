@@ -115,31 +115,12 @@ std::vector<Point> TargetDetector::filterContours(std::vector<std::vector<Point>
             {
                 pointless.push_back(outputContour);
                 Scalar color( rand()&255, rand()&255, rand()&255 );
-                drawContours(thirdTime, pointless, 0, color);            }
+                drawContours(thirdTime, pointless, 0, color);
+                return outputContour
+            }
 
         }
-            //return outputContour;
-            /*
-        //filters shapes that doen't have 8 points, aren't 50 big, and are concave
-        if (outputContour.size() == 8 && contourArea(outputContour) > 50
-            && isContourConvex(outputContour))
-        {
-            double maxCosine = 0;
-            for(int j = 2; j <=4; j++)
-            {
-                double cosine = fabs(cos(angle(outputContour.at(j%4),
-                outputContour.at(j-2), outputContour.at(j-1))));
-                maxCosine = MAX(maxCosine, cosine);
-            }
-            //filters out contours that don't have only 90deg anlges
-            if(maxCosine < .2)
-
-            {
-                return outputContour;
-            }
->>>>>>> 1102d98a1c0746361617778a07451db59fc96843
-        }
-        */
+            //
     }
 
     imshow("originalSecretImage", thirdTime);
