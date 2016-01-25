@@ -35,7 +35,7 @@ cv::Point Target::getCenter()//finds center point of target
         center += edge.at(x);
     }
     //center /= x;
-    center.x /= x
+    center.x /= x;
     center.y /= x;
     //will discuss better changes next time we meet
     return center;
