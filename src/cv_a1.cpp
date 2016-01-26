@@ -12,8 +12,10 @@ int main()
 {
     VideoDevice camera;
     //camera.startCapture(1);
-    //               out of src, out of build
+    //Uncomment each line individually to test each image
     Mat img = imread("../../imgs/ourpics/9ft_tilted/9ft_tilted.jpg");
+    //Mat img = imread("../../imgs/ourpics/9ft_45degrees/9ft_45degrees.jpg");
+    //Mat img = imread("../../imgs/ourpics/1m/1meter.jpg");
     imshow("Image", img);
     waitKey(0);
     TargetDetector detector;
