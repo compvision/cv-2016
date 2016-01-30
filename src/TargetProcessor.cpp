@@ -6,8 +6,8 @@ TargetProcessor::TargetProcessor()
 {
     objectWidth = 1.6667; //feet
     focalLength = 480; //varies by camera
-    horizCenter = 320; //aslo varies by camera
-    vertCenter = 240;
+    horizCenter = 320; //aslo varies by camera (center horizontal point on video)
+    vertCenter = 240; //center vertical point on video
 
 } //constructor
 
@@ -32,7 +32,8 @@ double TargetProcessor::calculateAzimuth() //unsure if this is working properly,
 
 double TargetProcessor::calculateAltitude() //same comment as calculateAzimuth()
 {
+    const int cameraAngle = 0; //angle the camera is pointing up from the horizon; assumes camera is level
     double offset = imageTarCenter.y / vertCenter;
     double distance = calculateDistance();
-    return (atan(offset/distance))*(180/M_PI); //in degrees
+    return (atan(offset/distance))*(180/M_PI) + camerAngle; //in degrees
 }

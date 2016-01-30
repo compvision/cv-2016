@@ -16,16 +16,16 @@ class TargetProcessor
 
     private:
 
-        double imageTarWidth;
+        const double imageTarWidth;
         //double imageHeight;
-        double objectWidth;
+        const double objectWidth;
         //double objectHeight;
         //only need width or height, not both.
         cv::Point imageTarCenter;
-        double focalLength; 
-        double horizCenter;
+        const double focalLength; 
+        const double horizCenter;
         //center horizontal point of the picture
-        double vertCenter;
+        const double vertCenter;
         //center vertical point
 
 };
