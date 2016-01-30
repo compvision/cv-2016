@@ -36,11 +36,12 @@ int main(int argc, char* argv[])
     if(!config.getIsHeadless())
         gui.init();
     if(config.getIsDebug())
-	 std::cout << "Im debugging! :D\n";
+	 	std::cout << "Im debugging! :D\n";
 
     while(true)
     {
-        networkController.waitForPing();
+		if(config.getIsNetworking())
+        	networkController.waitForPing();
 
         cv::Mat image = camera.getImage();
         Target* target = detector.processImage(image);
@@ -54,12 +55,16 @@ int main(int argc, char* argv[])
 			double azimuth = processor.calculateAzimuth();
 			double altitude = processor.calculateAltitude();
 
-            networkController.sendMessage("true;" +
-                boost::lexical_cast<std::string> (distance) + ";" +
-				boost::lexical_cast<std::string> (azimuth) + ";" +
-				boost::lexical_cast<std::string> (altitude));
+			if (config.getIsNetworking())
+			{
+		        networkController.sendMessage("true;" +
+		            boost::lexical_cast<std::string> (distance) + ";" +
+					boost::lexical_cast<std::string> (azimuth) + ";" +
+					boost::lexical_cast<std::string> (altitude));
+			}
 
-            std::cout << "Target Found! Distance: " << distance;
+			if(config.getIsDebug())
+            	std::cout << "Target Found! Distance: " << distance;
         }
         else
         {
