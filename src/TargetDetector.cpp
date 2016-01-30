@@ -13,12 +13,19 @@ Target* TargetDetector::processImage(Mat input) {
     //secretImage = input.clone();
     dilate(input, input, Mat());
     secretImage = input.clone();
-    imshow("Before Contouring", input);
 
     std::vector<std::vector<Point> > contours = contour(input);
+    std::cout << "not contours" << std::endl;
     std::vector<Point> finalContour = filterContours(contours);
-    Target toReturn(finalContour);
-    return &toReturn;
+    std::cout << "not filterContours" << std::endl;
+
+    if (finalContour.size() == 0) {
+        return NULL;
+    }
+    else {
+        Target* toReturn = new Target(finalContour);
+        return toReturn;
+    }
 }
 
 Mat TargetDetector::getSecrets() {
@@ -90,14 +97,17 @@ std::vector<Point> TargetDetector::filterContours(std::vector<std::vector<Point>
         approxPolyDP(contours[j], outputContour, (cv::arcLength(cv::Mat(contours.at(j)), true) * 0.01), true);
 
 
-
-        std::cout<<"Points" << outputContour << std::endl;
-        if (contourArea(outputContour) > 100) { //&& isContourConvex(outputContour)) {
+        if (contourArea(outputContour) > 100 && outputContour.size() == 8) { //&& isContourConvex(outputContour)) {
             double maxCosine = 0;
             for(int j = 2; j <=4; j++)
             {
-                double cosine = fabs(cos(angle(outputContour.at(j%4),
-                                               outputContour.at(j-2), outputContour.at(j-1))));
+                double cosine;
+                try {
+                    cosine = fabs(cos(angle(outputContour.at(j%4), outputContour.at(j-2), outputContour.at(j-1))));
+                }
+                catch(std::exception e){
+                    std:: cout << e.what();
+                }
                 maxCosine = MAX(maxCosine, cosine);
             }
             //filters out contours that don't have only 90deg anlges
@@ -107,7 +117,6 @@ std::vector<Point> TargetDetector::filterContours(std::vector<std::vector<Point>
                 pointless.push_back(outputContour);
                 Scalar color( rand()&255, rand()&255, rand()&255 );
                 drawContours(thirdTime, pointless, 0, color);
-                imshow("originalSecretImage", thirdTime);
 
                 return outputContour;
             }

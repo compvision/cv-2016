@@ -24,10 +24,9 @@ int main(int argc, char* argv[])
     VideoDevice camera;
 	CmdLineInterface interface(argc, argv);
 	AppConfig config = interface.getConfig();
-	GUIManager gui;
+	//GUIManager gui;
 
-	if(config.getIsDevice())
-    {
+	if(config.getIsDevice()){
         camera.startCapture(config.getDeviceID());
         if(config.getIsDebug())
             std::cout << "Camera ready!\n";
@@ -37,27 +36,77 @@ int main(int argc, char* argv[])
     if(config.getIsNetworking())
         networkController.startServer();
 
-    if(!config.getIsHeadless())
-        gui.init();
+    //if(!config.getIsHeadless())
+    //    gui.init();
     if(config.getIsDebug())
 	 	std::cout << "Im debugging! :D\n";
+    cv::Mat image;
 
+    //debug
+    int loop = 1;
+    cv::namedWindow("Live Video Feed", cv::WINDOW_NORMAL);
     while(true)
     {
+        if(config.getIsDebug())
+            std::cout << "While Loop #" << loop << std::endl;
+
 		if(config.getIsNetworking())
         	networkController.waitForPing();
 
-        cv::Mat image = camera.getImage();
+        image = camera.getImage();
+        if(!image.data) // check if image is valid
+        {
+            if(config.getIsDebug())
+                std::cout << "failed to read image" << std::endl;
+            return -1;
+        }
+        imshow("Live Video Feed", image);
+
+        if(config.getIsDebug())
+            std::cout << "Image Read" << std::endl;
         Target* target = detector.processImage(image);
 
-        bool foundTarget = (target == NULL ? false : true);
-
+        if(config.getIsDebug())
+            std::cout << "Image Processed by Target Detector" << std::endl;
+        /*
+        (std::cout << "Target Value:" << target << "End of Target Value\n";
+        std::cout << "CR A OW: " << target-> crow;
+        target -> printPoints();
+        */
+        bool foundTarget = false;
+        if (target != NULL)
+        {
+            foundTarget = true;
+        }
+        std::cout <<"About to check the value of foundTarget" << std::endl;
         if(foundTarget)
         {
+
+            std::cout <<"Target was found " << std::endl;
+
+            if(config.getIsDebug())
+                std::cout << "Image Being Processed" << std::endl;
+
             processor.loadTarget(target);
+
+            if(config.getIsDebug())
+                std::cout << "Target Loaded" << std::endl;
+
             double distance = processor.calculateDistance();
+
+            if(config.getIsDebug())
+                std::cout << "Distance Calculated" << std::endl;
+
 			double azimuth = processor.calculateAzimuth();
+            if(config.getIsDebug())
+                std::cout << "Azimuth Calculated" << std::endl;
+
 			double altitude = processor.calculateAltitude();
+            if(config.getIsDebug())
+                std::cout << "Altitude Calculated" << std::endl;
+
+            if(config.getIsDebug())
+                std::cout << "Image Processed by TargetProcessor" << std::endl;
 
 			if (config.getIsNetworking())
 			{
@@ -67,13 +116,19 @@ int main(int argc, char* argv[])
 					boost::lexical_cast<std::string> (altitude));
 			}
 
-			if(config.getIsDebug())
+			if(config.getIsDebug()){
             	std::cout << "Target Found! Distance: " << distance;
+                std::cout << "Altitude: " << altitude << std::endl;
+                std::cout << "Azimuth: " << azimuth << std::endl;
+            }
         }
         else
         {
-            networkController.sendMessage("false;");
+            if (config.getIsNetworking())
+                networkController.sendMessage("false;");
         }
+        loop++;
+        delete target;
     }
 
     return 0;

@@ -1,10 +1,15 @@
 #include "Target.hpp"
 #include <opencv2/opencv.hpp>
 #include <math.h>
+#include <iostream>
 
 Target::Target(std::vector<cv::Point> contour)
 {
     edge = contour;
+    //crap
+    std::cout << "EDGE" << edge.size();
+
+    //crow = 1415;
 }
 
 double Target::getHeight()
@@ -16,6 +21,17 @@ double Target::getWidth()
 {
     return fabs(getRightPoint().x - getLeftPoint().x);
 }
+
+/*
+bool Target::isInitialized()
+{
+    std::cout << "EDGE" << edge;
+    if (edge.size() == 0) {
+        return false;
+    }
+    return true;
+}
+*/
 
 void Target::printPoints() //debugging
 {

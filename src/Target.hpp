@@ -11,6 +11,8 @@ public:
     double getWidth();
     void printPoints();
     Point getCenter();
+    //bool isInitialized();
+    //int crow;
 private:
     Point getTopPoint();
     Point getBottomPoint();
