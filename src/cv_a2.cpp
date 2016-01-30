@@ -23,10 +23,12 @@ int main()
     processor.loadTarget(target);
     double distance = processor.calculateDistance();
     double azimuth = processor.calculateAzimuth();
+    double altitude = processor.calculateAltitude();
     target->printPoints();
 
     std::cout << "distance: " << distance << "m" <<std::endl;
-    std::cout << "azimuth: " << azimuth << "m" << std::endl;
+    std::cout << "azimuth: " << azimuth << "degrees" << std::endl;
+    std::cout << "altitude: " << altitude << "degrees" << std::endl;
     //wasn't sure which units
     return 0;
 }

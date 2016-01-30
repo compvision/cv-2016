@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/option16/workspace/cv-2016/src/Target.hpp
+opencv2/opencv.hpp
+-
+
+/home/option16/workspace/cv-2016/src/TargetDetector.cpp
+TargetDetector.hpp
+/home/option16/workspace/cv-2016/src/TargetDetector.hpp
+Target.hpp
+/home/option16/workspace/cv-2016/src/Target.hpp
+iostream
+-
+
+/home/option16/workspace/cv-2016/src/TargetDetector.hpp
+Target.hpp
+/home/option16/workspace/cv-2016/src/Target.hpp
+opencv2/opencv.hpp
+-
+

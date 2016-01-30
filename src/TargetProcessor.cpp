@@ -23,9 +23,16 @@ double TargetProcessor::calculateDistance()
     return objectWidth*focalLength/imageTarWidth; //returns the distance
 }
 
-double TargetProcessor::calculateAzimuth()
+double TargetProcessor::calculateAzimuth() //unsure if this is working properly, but is returning a reasonable looking value
 {
-    double offset = fabs(imageTarCenter.x / horizCenter);
+    double offset = imageTarCenter.x / horizCenter;
     double distance = calculateDistance();
-    return atan(offset/distance);
+    return (atan(offset/distance))*(180/M_PI); //in degrees
+}
+
+double TargetProcessor::calculateAltitude() //same comment as calculateAzimuth()
+{
+    double offset = imageTarCenter.y / vertCenter;
+    double distance = calculateDistance();
+    return (atan(offset/distance))*(180/M_PI); //in degrees
 }

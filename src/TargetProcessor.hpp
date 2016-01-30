@@ -12,6 +12,7 @@ class TargetProcessor
         void loadTarget(Target* target);
         double calculateDistance();
         double calculateAzimuth();
+        double calculateAltitude();
 
     private:
 
