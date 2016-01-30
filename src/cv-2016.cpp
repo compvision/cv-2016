@@ -1,4 +1,8 @@
-#include <iostream>
+/**
+*   CV-2016
+*   Main File
+*   TODO: Add Helpful Comments
+**/
 #include <opencv2/opencv.hpp>
 #include <boost/lexical_cast.hpp>
 
@@ -18,7 +22,7 @@ int main(int argc, char* argv[])
     TargetProcessor processor;
     NetworkController networkController;
     VideoDevice camera;
-	CmdLineInterface interface(argc, argv);		
+	CmdLineInterface interface(argc, argv);
 	AppConfig config = interface.getConfig();
 	GUIManager gui;
 
