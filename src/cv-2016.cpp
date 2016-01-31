@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
     //debug
     int loop = 1;
     cv::namedWindow("Live Video Feed", cv::WINDOW_NORMAL);
-    while(true)
+    while(cv::waitKey(30) != 27)
     {
         if(config.getIsDebug())
             std::cout << "While Loop #" << loop << std::endl;
