@@ -15,6 +15,8 @@
 #include "VideoDevice.hpp"
 #include "GUIManager.hpp"
 
+void randomMethod(int, void*){}
+
 int main(int argc, char* argv[])
 {
     // Create all the necessary objects (calls the default constructor for each)
@@ -60,7 +62,6 @@ int main(int argc, char* argv[])
                 std::cout << "failed to read image" << std::endl;
             return -1;
         }
-        imshow("Live Video Feed", image);
 
         if(config.getIsDebug())
             std::cout << "Image Read" << std::endl;
@@ -77,10 +78,12 @@ int main(int argc, char* argv[])
         if (target != NULL)
         {
             foundTarget = true;
+            image = detector.getOutlinedImage();
         }
         std::cout <<"About to check the value of foundTarget" << std::endl;
         if(foundTarget)
         {
+
 
             std::cout <<"Target was found " << std::endl;
 
@@ -108,6 +111,16 @@ int main(int argc, char* argv[])
             if(config.getIsDebug())
                 std::cout << "Image Processed by TargetProcessor" << std::endl;
 
+                std::string dis = "distance: ";
+                dis += distance;
+                std::string alt = "altitude: ";
+                alt += altitude;
+                std::string azi = "azimuth: ";
+                azi += azimuth;
+
+                createTrackbar(dis, "Live Video Feed", &loop, 1, randomMethod);
+                createTrackbar(alt, "Live Video Feed", &loop, 1, randomMethod);
+                createTrackbar(azi, "Live Video Feed", &loop, 1, randomMethod);
 			if (config.getIsNetworking())
 			{
 		        networkController.sendMessage("true;" +
@@ -121,12 +134,16 @@ int main(int argc, char* argv[])
                 std::cout << "Altitude: " << altitude << std::endl;
                 std::cout << "Azimuth: " << azimuth << std::endl;
             }
+
         }
         else
         {
             if (config.getIsNetworking())
                 networkController.sendMessage("false;");
         }
+        imshow("Live Video Feed", image);
+
+
         loop++;
         delete target;
     }

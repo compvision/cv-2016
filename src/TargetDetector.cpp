@@ -8,11 +8,9 @@ TargetDetector::TargetDetector() {
 }
 
 Target* TargetDetector::processImage(Mat input) {
-    originalSecretImage = input.clone();
-    input = thresholdImage(input, 0, 102, 227, 255);
-    //secretImage = input.clone();
-    dilate(input, input, Mat());
     secretImage = input.clone();
+    input = thresholdImage(input, 0, 102, 227, 255);
+    dilate(input, input, Mat());
 
     std::vector<std::vector<Point> > contours = contour(input);
     std::cout << "not contours" << std::endl;
@@ -28,10 +26,9 @@ Target* TargetDetector::processImage(Mat input) {
     }
 }
 
-Mat TargetDetector::getSecrets() {
+Mat TargetDetector::getOutlinedImage() {
     return secretImage;
 }
-
 //private methods
 
 Mat TargetDetector::canny(Mat input) {
@@ -115,9 +112,8 @@ std::vector<Point> TargetDetector::filterContours(std::vector<std::vector<Point>
 
             {
                 pointless.push_back(outputContour);
-                Scalar color( rand()&255, rand()&255, rand()&255 );
-                drawContours(thirdTime, pointless, 0, color);
-
+                Scalar color(0,0,0);
+                drawContours(secretImage, pointless, 0, color, 10);
                 return outputContour;
             }
 

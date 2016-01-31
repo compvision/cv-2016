@@ -10,7 +10,7 @@ class TargetDetector
 public:
     TargetDetector();
     Target* processImage(Mat input);
-    Mat getSecrets();
+    Mat getOutlinedImage();
     //thresholds, cannies, contours, filters contours
 private:
     Mat canny(Mat input);
