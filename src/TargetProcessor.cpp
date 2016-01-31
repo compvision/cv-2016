@@ -27,7 +27,7 @@ double TargetProcessor::calculateAzimuth() //unsure if this is working properly,
 {
     double offset = imageTarCenter.x - horizCenter;
     double distance = calculateDistance();
-    return (atan(offset/distance))*(180/M_PI); //in degrees
+    return (atan(offset/focalLength))*(180/M_PI); //in degrees
 }
 
 double TargetProcessor::calculateAltitude() //same comment as calculateAzimuth()
@@ -35,5 +35,5 @@ double TargetProcessor::calculateAltitude() //same comment as calculateAzimuth()
     int cameraAngle = 0; //angle the camera is pointing up from the horizon; assumes camera is level
     double offset = imageTarCenter.y - vertCenter;
     double distance = calculateDistance();
-    return (atan(offset/distance))*(180/M_PI) + cameraAngle; //in degrees
+    return (atan(offset/focalLength))*(180/M_PI) + cameraAngle; //in degrees
 }
