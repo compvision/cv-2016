@@ -4,7 +4,7 @@
 
 TargetProcessor::TargetProcessor()
 {
-    objectWidth = 1.6667; //feet
+    objectWidth = 0.508; //meters
     focalLength = 480; //varies by camera
     horizCenter = 320; //aslo varies by camera (center horizontal point on video)
     vertCenter = 240; //center vertical point on video
@@ -20,7 +20,7 @@ void TargetProcessor::loadTarget(Target* target)
 
 double TargetProcessor::calculateDistance()
 {
-    return objectWidth*focalLength/imageTarWidth; //returns the distance
+    return objectWidth*focalLength/imageTarWidth; //returns the distance (m)
 }
 
 double TargetProcessor::calculateAzimuth() //unsure if this is working properly, but is returning a reasonable looking value
@@ -33,7 +33,7 @@ double TargetProcessor::calculateAzimuth() //unsure if this is working properly,
 double TargetProcessor::calculateAltitude() //same comment as calculateAzimuth()
 {
     int cameraAngle = 0; //angle the camera is pointing up from the horizon; assumes camera is level
-    double offset = imageTarCenter.y - vertCenter;
+    double offset =  vertCenter - imageTarCenter.y;
     double distance = calculateDistance();
     return (atan(offset/focalLength))*(180/M_PI) + cameraAngle; //in degrees
 }

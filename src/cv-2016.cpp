@@ -47,8 +47,13 @@ int main(int argc, char* argv[])
     //debug
     int loop = 1;
     cv::namedWindow("Live Video Feed", cv::WINDOW_NORMAL);
+    cv::namedWindow("General", cv::WINDOW_NORMAL);
+
+
     while(cv::waitKey(30) != 27)
     {
+        Mat background(Size(1000,1000), CV_8UC1, Scalar(255, 255, 255 ));
+
         if(config.getIsDebug())
             std::cout << "While Loop #" << loop << std::endl;
 
@@ -111,19 +116,27 @@ int main(int argc, char* argv[])
             if(config.getIsDebug())
                 std::cout << "Image Processed by TargetProcessor" << std::endl;
 
-                std::string dis = "distance: ";
-                dis += distance;
-                std::string alt = "altitude: ";
-                alt += altitude;
-                std::string azi = "azimuth: ";
-                azi += azimuth;
+                std::string dis = "distance: " + std::to_string(distance);
+                std::string alt = "altitude: " + std::to_string(altitude);
+                std::string azi = "azimuth: " + std::to_string(azimuth);  
 
-                createTrackbar(dis, "Live Video Feed", &loop, 1, randomMethod);
-                createTrackbar(alt, "Live Video Feed", &loop, 1, randomMethod);
-                createTrackbar(azi, "Live Video Feed", &loop, 1, randomMethod);
-			if (config.getIsNetworking())
-			{
-		        networkController.sendMessage("true;" +
+                cv::putText(background, dis, cv::Point(50,100),
+                cv::FONT_HERSHEY_COMPLEX_SMALL, 2, cv::Scalar(0, 255, 0),
+                1);
+
+                cv::putText(background, alt, cv::Point(50,200),
+                cv::FONT_HERSHEY_COMPLEX_SMALL, 2, cv::Scalar(0, 255, 0),
+                1);
+
+                cv::putText(background, azi, cv::Point(50,400),
+                cv::FONT_HERSHEY_COMPLEX_SMALL, 2, cv::Scalar(0, 255, 0),
+                1);
+
+                imshow("General", background);
+
+                if (config.getIsNetworking())
+			    {
+		            networkController.sendMessage("true;" +
 		            boost::lexical_cast<std::string> (distance) + ";" +
 					boost::lexical_cast<std::string> (azimuth) + ";" +
 					boost::lexical_cast<std::string> (altitude));
