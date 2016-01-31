@@ -25,15 +25,15 @@ double TargetProcessor::calculateDistance()
 
 double TargetProcessor::calculateAzimuth() //unsure if this is working properly, but is returning a reasonable looking value
 {
-    double offset = imageTarCenter.x / horizCenter;
+    double offset = imageTarCenter.x - horizCenter;
     double distance = calculateDistance();
     return (atan(offset/distance))*(180/M_PI); //in degrees
 }
 
 double TargetProcessor::calculateAltitude() //same comment as calculateAzimuth()
 {
-    const int cameraAngle = 0; //angle the camera is pointing up from the horizon; assumes camera is level
-    double offset = imageTarCenter.y / vertCenter;
+    int cameraAngle = 0; //angle the camera is pointing up from the horizon; assumes camera is level
+    double offset = imageTarCenter.y - vertCenter;
     double distance = calculateDistance();
     return (atan(offset/distance))*(180/M_PI) + cameraAngle; //in degrees
 }
