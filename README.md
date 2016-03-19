@@ -5,6 +5,7 @@
 * Powerful Image Processing Using OpenCV
 * Accurate Image Distance Calculations
 * Easy to compile (Using CMake)
+* Integrated with Slack
 
 ###Project Managers
 * George Troulis
