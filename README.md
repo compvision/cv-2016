@@ -7,13 +7,11 @@
 * Easy to compile (Using CMake)
 * Integrated with Slack
 
-###Project Managers
-* George Troulis
-* Nick Nebel
-
 ###Contributors
 * Ronak Shah
 * Prem Pathuri
 * Justin Davis
 * Adam Tedeschi
+* George Troulis
+* Nick Nebel
 * Daniel Santora
